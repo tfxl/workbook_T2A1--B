@@ -128,7 +128,7 @@ Thus, while Bubble Sort could be useful in shorter arrays, or ones that are most
 &nbsp;  
 ### **Merge Sort**   
 
-Merge Sort is a stable sorting algorithm that is more time efficient compared with Bubble Sort, with O(n*log n) time complexity (8), although it has a slightly decreased memory efficiency of O(n) (8) meaning that it requires an additional unit of memory per increased input unit, due to a series of recursive method calls (10). These recursive calls allow for the initial input, an array, to separate into smaller and smaller sub-arrays, until each sub-array is composed of only one element (10). This can be seen in the image below:
+Merge Sort is a stable sorting algorithm that is more time efficient compared with Bubble Sort, with O(n log n) time complexity (8), although it has a slightly decreased memory efficiency of O(n) (8) meaning that it requires an additional unit of memory per increased input unit, due to a series of recursive method calls (10). These recursive calls allow for the initial input, an array, to separate into smaller and smaller sub-arrays, until each sub-array is composed of only one element (10). This can be seen in the image below:
 
 &nbsp; 
 
@@ -155,7 +155,7 @@ Repeating this process can be better shown graphically as follows :
 &nbsp;  
 
 
-Once one sub-array is exhausted, the remaining values of the other sub-array can be instantly appended to the merged array. An efficiently written piece of code can be utilised from Vladislav Trotsenko (12), although the comments have been added by this author. It is important to note that the "merge_sort" method is recursively called.
+Once one sub-array is exhausted, the remaining values of the other sub-array can be instantly appended to the merged array. An efficiently written piece of code can be utilised from Vladislav Trotsenko (12), although the comments have been added by this author, as have some small additions as noted. It is important to note that the "merge_sort" method is recursively called.
 &nbsp;  
 
 
@@ -189,7 +189,6 @@ end
 unsorted_array = [20, 21, 4, 8, 21, 3, 1, 70, 10]
 sorted_array = merge_sort(unsorted_array)
 puts "Sorted array is #{sorted_array}"
-
 ```
 <br>
 
@@ -318,7 +317,6 @@ def binary_search(array, searched_value)
   while low_index <= high_index
 
     mid_index = (low_index + high_index) / 2 # this returns the index that is positioned midway between the lower end and higher end
-
     puts "Index being checked is #{mid_index}" # added for output display purposes only
 
     if array[mid_index] == searched_value
@@ -331,15 +329,12 @@ def binary_search(array, searched_value)
         high_index = mid_index - 1 # this subtraction is because the value at the mid-index has already been checked
     end
   end
-
   return "Searched value not found in provided array"
-
 end
 
 
 array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  
 searched_value = 10
-
 result = binary_search(array, searched_value)
 puts result
 ```
@@ -352,7 +347,7 @@ Index being checked is 9
 Searched value '10' first located at index 9
 ```
 
-It can also be noted that the Binary Search algorithm can utilise recursion, however not only does this not improve the time complexity, but it increases the memory or space complexity in Big O from O(1) to O(logN) &nbsp;(16) making it less efficient in that regard.
+It can also be noted that the Binary Search algorithm can utilise recursion, however not only does this not improve the time complexity, but it increases the memory or space complexity in Big O from a constant, O(1) to O(log n) &nbsp;(16) making it less efficient in that regard.
 
 Now, assuming the input is doubled, but still ordered, and a 'worst-case' scenario search is performed for the value "14", then it can be noted that even with double the input, only one extra step is required.  
 
@@ -375,20 +370,20 @@ Searched value '14' first located at index 13
 
 Indeed, this is predictable based on applying a logarithmic equation, given the Binary Search algorithm time complexity is O(log n).
 
-* For instance, log<sub>2</sub>(8) = 3, indicating that for any array of up to 8 elements, a Binary Search algorithm can find, or identify as absent, any element within 3 iterations.  
-* Applying log<sub>2</sub>(16) = 4 indicates that for any array up to 16 elements in length, a maximum 4 iterations will be required  
+* For instance, log<sub>2</sub>(8) = 3, indicating that for any array of up to but not including 8 elements, a Binary Search algorithm can find, or identify as absent, any element within 3 iterations.  
+* Applying log<sub>2</sub>(16) = 4 indicates that for any array up to but not including 16 elements in length, a maximum 4 operations will be required  
 * Thus an array of up to 10 elements will require, at most, 4 iterations, as exampled above. 
 <br>
 
-A shorter method is to directly apply log<sub>2</sub>(10) which gives the answer 3.32 and that can be understood to thus require, at most, up to 4 steps to find any element, or show as absent, in an array of 10 elements.
+A shorter method is to directly apply log<sub>2</sub>(10) which gives 3.32 as the answer. By taking the floor (3) and adding one (3+1) means that at most, 4 operations will find any element, or show to be absent, in an array of 10 elements.
 
 * Thus, predictably, log<sub>2</sub>(20) = 4.32, means that in the worst case scenario, 5 steps are required to find any value, or prove it absent, from an array with 20 elements, which is also exampled above. 
 
-Using the conversion from logarithms to exponents is also possible, showing that with up to 5 steps, a Binary Search can find, or identify as absent, any element of up to 32 elements, as follows: 2<sup>5</sup> = 32
+Using the conversion from logarithms to exponents is also possible, showing that with up to 5 steps, a Binary Search can find, or identify as absent, any element of up to but not including 32 elements, as follows: 2<sup>5</sup> = 32
 
 And for larger values, log<sub>2</sub>(1000000) = 19.93 calculates that for an array of up to 1 million elements in length, any element can be found, or shown as missing, using a Binary Search algorithm, in only 20 steps. 
 
-Again, adjusting from logarithms to exponents, it can be shown that with 20 steps any element can be found, or identified as missing, by a Binary Search algorithm in an array of up to 1048576 elements in size, by the equation 2<sup>20</sup> = 1048576
+Again, adjusting from logarithms to exponents, it can be shown that with 20 steps any element can be found, or identified as missing, by a Binary Search algorithm in an array of up to but not including 1048576 elements in size, by the equation 2<sup>20</sup> = 1048576
 
 
 
