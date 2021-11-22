@@ -1,6 +1,6 @@
 # T2A1-B WORKBOOK
 ## Timothy Long CAB022105
-*please note that if the markdown file is desired, with enclosed code, it can be found at github*
+*.md and .rb files at https://github.com/tfxl/workbook_T2A1--B.git*
 &nbsp; 
 &nbsp;  
 &nbsp;  
@@ -168,13 +168,12 @@ def merge_sort(arr)
   a, b, sorted = merge_sort(arr[0...mid]), merge_sort(arr[mid..-1]), [] 
       
       # this is where the recursive method calls are implemented, with "a" starting on the first half, and "b" on the second half
-      # as the call is recursive, it means that the initial "a" will be split again into two parts, and repeated until a single element array remains (arr.size = 1)
+      # as the call is recursive, it means that the initial "a" will be split again into two parts, and repeated until a single element array remains (each arr.size = 1)
       # an empty array is assigned to "sorted" to be used once the merging begins
 
   sorted << (a[0] < b[0] ? a.shift : b.shift) while [a,b].none?(&:empty?)
 
-    # added by author of comments for output display purposes only
-  p sorted
+  p sorted # added by author of comments for output display purposes only
 
     # these sub-arrays can be re-assembled (merged) by comparing their first elements, and moving the smaller value into the sorted array
     # this will continue while it is true that a or b still has elements that need to be merged
@@ -243,9 +242,10 @@ def linear_search(array, searched_value)
   while i < array.length
 
     if array[i] == searched_value
+      puts "Index being checked is #{i}" # added for output display purposes only
       return "Searched value '#{searched_value}' first located at index #{i}"
     else
-      p searched_value # added for display purposes only
+      p "Index being checked is #{mid_index}" # added for output display purposes only
       i += 1 # if the value is not found, then iterate to the next index in the array
     end
   end
@@ -260,15 +260,16 @@ puts result
 ```
 ```Ruby
 workbook_T2A1-B % ruby linear_search.rb
-1
-2
-3
-4
-5
-6
-7
-8
-9
+Index being checked is 0
+Index being checked is 1
+Index being checked is 2
+Index being checked is 3
+Index being checked is 4
+Index being checked is 5
+Index being checked is 6
+Index being checked is 7
+Index being checked is 8
+Index being checked is 9
 Searched value '10' first located at index 9
 ```
 Note that although the array in the provided example is sorted, it **does not have to be** for a linear search to be performed, which can be considered an advantage of this search algorithm.
@@ -314,10 +315,11 @@ def binary_search(array, searched_value)
   low_index = 0
   high_index = (array.length - 1)
 
-  puts "Index being checked is #{mid_index}"  # added for output display purposes only
-
   while low_index <= high_index
+
     mid_index = (low_index + high_index) / 2 # this returns the index that is positioned midway between the lower end and higher end
+
+    puts "Index being checked is #{mid_index}" # added for output display purposes only
 
     if array[mid_index] == searched_value
         return "Searched value '#{searched_value}' first located at index #{mid_index}"
@@ -327,7 +329,6 @@ def binary_search(array, searched_value)
 
     else
         high_index = mid_index - 1 # this subtraction is because the value at the mid-index has already been checked
-
     end
   end
 
